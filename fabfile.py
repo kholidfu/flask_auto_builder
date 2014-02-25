@@ -54,7 +54,7 @@ def install_packages_venv(domain):
     env.key_filename = "/home/banteng/.ssh/id_rsa"
     with lcd("/home/sopier/" + domain):
         with path("/home/sopier/" + domain + "/bin/", behavior="prepend"):
-            run("pip install flask uwsgi unidecode pymongo")
+            run("pip install flask uwsgi unidecode")
 
 def upload_package(package, domain):
     """upload folder app/ run.py and uwsgi.ini from localhost"""
