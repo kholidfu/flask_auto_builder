@@ -39,8 +39,8 @@ def install_packages():
     env.user = "sopier"
     env.key_filename = "/home/banteng/.ssh/id_rsa"
     run("sudo apt-get install build-essential python-dev" \
-        " python-pip nginx emacs24-nox")
-    run("sudo pip install virtualenv supervisor beautifulsoup4 pillow")
+        " python-pip nginx emacs24-nox libxml2-dev libxslt-dev zlib1g-dev")
+    run("sudo pip install virtualenv supervisor beautifulsoup4 pillow lxml")
 
 def create_venv(domain):
     """ tiap domain dibuatkan virtualenv sendiri2, misal example.com"""
