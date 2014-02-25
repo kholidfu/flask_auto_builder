@@ -40,7 +40,7 @@ def install_packages():
     env.key_filename = "/home/banteng/.ssh/id_rsa"
     run("sudo apt-get install build-essential python-dev" \
         " python-pip nginx emacs24-nox")
-    run("sudo pip install virtualenv supervisor")
+    run("sudo pip install virtualenv supervisor beautifulsoup4 pillow")
 
 def create_venv(domain):
     """ tiap domain dibuatkan virtualenv sendiri2, misal example.com"""
