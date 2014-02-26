@@ -40,7 +40,7 @@ def install_packages():
     env.key_filename = "/home/banteng/.ssh/id_rsa"
     run("sudo apt-get install build-essential python-dev" \
         " python-pip nginx emacs24-nox libxml2-dev libxslt-dev zlib1g-dev libjpeg-dev")
-    run("sudo pip install virtualenv supervisor beautifulsoup4 pillow lxml python-amazon-simple-product-api")
+    run("sudo pip install virtualenv supervisor")
 
 def create_venv(domain):
     """ tiap domain dibuatkan virtualenv sendiri2, misal example.com"""
@@ -54,7 +54,10 @@ def install_packages_venv(domain):
     env.key_filename = "/home/banteng/.ssh/id_rsa"
     with lcd("/home/sopier/" + domain):
         with path("/home/sopier/" + domain + "/bin/", behavior="prepend"):
-            run("pip install flask uwsgi unidecode")
+            run("pip install flask uwsgi unidecode beautifulsoup4 pillow" \
+                " python-amazon-simple-product-api")
+    with lcd("/home/sopier/" + domain + "/lib/python2.7/site-packages"):
+        run("ln -s /usr/lib/python2.7/dist-packages/lxml* .")
 
 def upload_package(package, domain):
     """upload folder app/ run.py and uwsgi.ini from localhost"""
