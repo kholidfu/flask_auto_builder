@@ -52,12 +52,11 @@ def install_packages_venv(domain):
     """ install flask uwsgi unidecode"""
     env.user = "sopier"
     env.key_filename = "/home/banteng/.ssh/id_rsa"
-    with lcd("/home/sopier/" + domain + "/lib/python2.7/site-packages"):
-        run("ln -s /usr/lib/python2.7/dist-packages/lxml* .")
+    run("ln -s /usr/lib/python2.7/dist-packages/lxml* /home/sopier/" + domain + "/lib/python2.7/site-packages")
     with lcd("/home/sopier/" + domain):
         with path("/home/sopier/" + domain + "/bin/", behavior="prepend"):
-            run("pip install flask uwsgi unidecode beautifulsoup4 pillow" \
-                " python-amazon-simple-product-api")
+            run("pip install flask uwsgi unidecode beautifulsoup4 pillow bottlenose")
+            run("pip install --no-deps python-amazon-simple-product-api")
 
 def upload_package(package, domain):
     """upload folder app/ run.py and uwsgi.ini from localhost"""
